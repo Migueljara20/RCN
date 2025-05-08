@@ -16,17 +16,20 @@ def get_noticias():
     for quote_block in soup.find_all("div", class_ ="post-h"):
         
         titulo_noticia = quote_block.find("h3", class_="title").text
-        print (titulo_noticia)
+        
         
         descripcion = quote_block.find("p", class_="lead").text
-        print(descripcion)
-       
-        media = quote_block.find("a", class_="img-a").get("src")
-        print(media)
+        
+        media = quote_block.find("a", class_="img-a").get("href")
+          
 
-        fecha = quote_block.find("div", class_="time").get("src")
-        print(fecha)
+        noticias.append({
+        "titulo": titulo_noticia,
+        "descripcion": descripcion,
+        "media": media,
+    })    
 
+    
     
     return noticias
 
